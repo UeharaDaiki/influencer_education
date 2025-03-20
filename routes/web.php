@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::prefix('user')->namespace('Users')->name('user.')->group(function () {
+    Route::get('/progress', [App\Http\Controllers\Users\ProgressController::class, 'showProgress'])->name('show.progress');
+});
