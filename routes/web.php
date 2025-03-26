@@ -18,4 +18,9 @@ Route::get('/', function () {
 });
 Route::prefix('user')->namespace('Users')->name('user.')->group(function () {
     Route::get('/progress', [App\Http\Controllers\Users\ProgressController::class, 'showProgress'])->name('show.progress');
+    Route::get('/delivery/{id}', [App\Http\Controllers\Users\DeliveryController::class, 'showDelivery'])->name('show.delivery');
+    Route::get('/top', [App\Http\Controllers\Users\TopController::class, 'showTop'])->name('show.top');
+    Route::get('/curriculum_list', [App\Http\Controllers\Users\CurriculumController::class, 'showCurriculum'])->name('show.curriculum');
+    Route::get('/profile', [App\Http\Controllers\Users\ProfileController::class, 'showProfile'])->name('show.profile');
+    Route::get('/login', [App\Http\Controllers\Users\LoginController::class, 'showLogin'])->name('show.login');    
 });
