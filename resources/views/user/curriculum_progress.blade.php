@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('user.layouts.app')
 
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/curriculumProgress.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/user/curriculumProgress.css') }}">
 @endsection
 @section('content')
 <div class="container">
@@ -15,12 +15,12 @@
                     <img class="image" src="{{ asset('storage/'.$user->profile_image) }}" alt="{{ asset($user->profile_image) }}">
                     <div class="profile">
                         {{ $user->name }}さんの授業進捗<br>現在の学年:
-                        @if($user->grade_id <= 6)
+                        @if($user->grade_id <= GradeTitles::ELEMENTARY_MAX)
                         <button class="elementary">小学{{ $user->grade_id }}年生</button>
-                        @elseif($user->grade_id >= 10)
-                        <button class="high">高校{{ $user->grade_id-9 }}年生</button>
+                        @elseif($user->grade_id >= GradeTitles::HIGH_SCHOOL_MIN)
+                        <button class="high">高校{{ $user->grade_id- GradeTitles::ELEMENTARY_AND_JUNIORHIGH }}年生</button>
                         @else
-                        <button class="junior-high">中学{{ $user->grade_id-6 }}年生</button>
+                        <button class="junior-high">中学{{ $user->grade_id- GradeTitles::ELEMENTARY_MAX }}年生</button>
                         @endif
                     </div>
                 </div>
