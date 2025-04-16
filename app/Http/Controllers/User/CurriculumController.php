@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
+use App\Http\Controllers\Controller;
 
 use App\Models\Curriculum;
 use App\Models\DeliveryTime;
@@ -9,8 +10,8 @@ use Illuminate\Http\Request;
 
 class CurriculumController extends Controller
 {
-    public function  showCurriculumList()
+    public function  showCurriculumList(Request $request)
     {
-        return view('curriculum_list');
+        return view('user.curriculum_list');
     }
 }

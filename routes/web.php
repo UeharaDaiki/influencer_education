@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CurriculumController;
+use App\Http\Controllers\User\CurriculumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/curriculum', [CurriculumController::class, 'showCurriculumList'])->name('curriculum.list');
+Route::prefix('user')->namespace('User')->name('user.')->group(function () {
+    Route::get('/curriculum_list', [CurriculumController::class, 'showCurriculumList'])->name('show.curriculum');
+});
