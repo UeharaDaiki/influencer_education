@@ -17,25 +17,29 @@
 
         <div>
             <a href="#">戻る</a>
-            <span>2025年4月スケジュール</span>
+            <div>
+                <button>◀︎</button>
+                <span>2025年4月スケジュール</span>
+                <button>▶︎</button>
+            </div>
             <span>小学校1年生</span>
         </div>
 
         <div>
             <aside>
                 <ul>
-                    <li>小学校1年生</li>
-                    <li>小学校2年生</li>
-                    <li>小学校3年生</li>
-                    <li>小学校4年生</li>
-                    <li>小学校5年生</li>
-                    <li>小学校6年生</li>
-                    <li>中学校1年生</li>
-                    <li>中学校2年生</li>
-                    <li>中学校3年生</li>
-                    <li>高校1年生</li>
-                    <li>高校2年生</li>
-                    <li>高校3年生</li>
+                    <li><button>小学校1年生</button></li>
+                    <li><button>小学校2年生</button></li>
+                    <li><button>小学校3年生</button></li>
+                    <li><button>小学校4年生</button></li>
+                    <li><button>小学校5年生</button></li>
+                    <li><button>小学校6年生</button></li>
+                    <li><button>中学校1年生</button></li>
+                    <li><button>中学校2年生</button></li>
+                    <li><button>中学校3年生</button></li>
+                    <li><button>高校1年生</button></li>
+                    <li><button>高校2年生</button></li>
+                    <li><button>高校3年生</button></li>
                 </ul>
             </aside>
             <main>
