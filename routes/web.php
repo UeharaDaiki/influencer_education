@@ -31,4 +31,5 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
     Route::get('/article_create', [App\Http\Controllers\Admin\ArticleController::class, 'showArticleCreate'])->name('show.article.create');
     Route::get('/article_edit/{id}', [App\Http\Controllers\Admin\ArticleController::class, 'showArticleEdit'])->name('show.article.edit');
     Route::post('/article_delete/{id}', [App\Http\Controllers\Admin\ArticleController::class, 'showArticleDelete'])->name('show.article.delete');
+    Route::post('/article_edit/{id}', [App\Http\Controllers\Admin\ArticleController::class, 'articleEdit'])->name('article.edit');
 });

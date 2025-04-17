@@ -1,0 +1,14 @@
+.posted-date{
+    padding-left:50px;
+    padding-top:30px;
+}
+.title{
+    padding-left:50px;
+    font-size:x-large;
+    font-weight:500;
+}
+.article-contents{
+    padding-left:50px;
+    padding-right:50px;
+    padding-top:10px;
+}
