@@ -27,18 +27,9 @@
 
         <div>
             <aside>
-                <button>小学校1年生</button><br>
-                <button>小学校2年生</button><br>
-                <button>小学校3年生</button><br>
-                <button>小学校4年生</button><br>
-                <button>小学校5年生</button><br>
-                <button>小学校6年生</button><br>
-                <button>中学校1年生</button><br>
-                <button>中学校2年生</button><br>
-                <button>中学校3年生</button><br>
-                <button>高校1年生</button><br>
-                <button>高校2年生</button><br>
-                <button>高校3年生</button>
+                @foreach ($grades as $grade)
+                    <button>{{ $grade->name }}</button><br>
+                @endforeach
             </aside>
             <main>
                 <div>
