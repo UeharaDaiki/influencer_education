@@ -12,6 +12,9 @@ class CurriculumController extends Controller
 {
     public function  showCurriculumList(Request $request)
     {
-        return view('user.curriculum_list');
+        $curriculums = Curriculum::all();
+        $grades = Grade::all();
+        $deliveryTimes = DeliveryTime::all();
+        return view('user.curriculum_list', compact('curriculums', 'grades', 'deliveryTimes'));
     }
 }
