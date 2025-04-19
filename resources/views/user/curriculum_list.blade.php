@@ -32,15 +32,25 @@
                 @endforeach
             </aside>
             <main>
-                <div>
-                    <img src="#" alt="サムネイル">
-                    <h2>授業タイトル</h2>
-                    <ul>
-                        <li>4月15日 14:00~15:00</li>
-                        <li>4月15日 14:00~15:00</li>
-                        <li>4月15日 14:00~15:00</li>
-                    </ul>
-                </div>
+                @foreach ($curriculums as $curriculum)
+                    @foreach ($delivery_times as $delivery_time)
+                        @if ($curriculum->id == $delivery_time->curriculums_id)
+                            <div>
+                                <img src="{{ $curriculum->thumbnail }}" alt="サムネイル">
+                                <h2>{{ $curriculum->title }}</h2>
+                                <ul>
+                                    @if ($curriculum->always_delivery_flg== 1)
+                                        <li><a href="#">常時配信</a></li>
+                                    @else
+                                            <li><a href="#">{{ $delivery_time->formatted_from }} ~ {{ $delivery_time->formatted_to }}</a></li>
+                                    @endif
+                                </ul>
+                            </div>
+                        @else
+                            @continue
+                        @endif
+                    @endforeach
+                @endforeach
             </main>
         </div>
         
