@@ -28,7 +28,7 @@
                 </span>
                 <button>▶︎</button>
             </div>
-            <span>小学校1年生</span>
+            <span>{{ $gradeName }}</span>
         </div>
 
         <div>
@@ -39,23 +39,17 @@
             </aside>
             <main>
                 @foreach ($curriculums as $curriculum)
-                    @foreach ($delivery_times as $delivery_time)
-                        @if ($delivery_time->delivery_from > $date || $delivery_time->delivery_to < $date)
-                            @continue
-                        @endif
-                        <div>
-                                <img src="{{ $curriculum->thumbnail }}" alt="サムネイル">
-                                <h2>{{ $curriculum->title }}</h2>
-                                <ul>
-                                    @if ($curriculum->always_delivery_flg == 1)
-                                        <li><a href="#">常時配信</a></li>
-                                    @else
-                                        <li><a href="#">{{ $delivery_time->delivery_from }} ~ {{ $delivery_time->delivery_to }}</a></li>
-                                    @endif
-                                </ul>
-                            </div>
-                        
-                    @endforeach
+                    <div>
+                        <img src="{{ $curriculum->thumbnail }}" alt="サムネイル">
+                        <h2>{{ $curriculum->title }}</h2>
+                        <ul>
+                            @if ($curriculum->always_delivery_flg == 1)
+                                <li><a href="#">常時配信</a></li>
+                            @else
+                                <li><a href="#">{{ $delivery_from }} ~ {{ $delivery_to }}</a></li>
+                            @endif
+                        </ul>
+                    </div>
                 @endforeach
             </main>
         </div>

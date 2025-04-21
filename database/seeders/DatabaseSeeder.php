@@ -18,8 +18,9 @@ class DatabaseSeeder extends Seeder
         if(App::environment('local')) {
             //ローカルだけで使いたいSeeder
             $this->call([
-                CurriculumSeeder::class,
-                DeliveryTimeSeeder::class,
+                CurriculumsSeeder::class,
+                DeliveryTimesSeeder::class,
+                UsersSeeder::class,
             ]);
         }
         // \App\Models\User::factory(10)->create();
