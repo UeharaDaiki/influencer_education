@@ -20,4 +20,9 @@ class Grade extends Model
     public static function getGrade() {
         return Grade::all();
     }
+
+    // name取得　表示中学年
+    public static function getGradeName($id) {
+        return self::where('id', $id)->value('name');
+    }
 }

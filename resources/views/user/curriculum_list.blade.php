@@ -20,14 +20,14 @@
         {{-- 新規登録 --}}
         <a href="#" class="btn btn-success mb-3">新規登録</a>
         {{-- 表示中がくねん --}}
-        <button type="button" class="btn btn-primary" style="margin-left: 110px">小学校１年生</button>
+        <button type="button" class="btn btn-primary" style="margin-left: 110px">{{ $grade_name }}</button>
       </div>
     </aside>
     <section class="d-flex">
       {{-- 各学年 --}}
       <div class="d-flex flex-column gap-2">
         @foreach($grades as $grade)
-          <button type="button" class="btn btn-primary" style="min-width: 160px;" data-id="{{ $grade->id }}">{{ $grade->name }}</button>
+        <a href="{{ route('admin.show.curriculum.list', ['id' => $grade->id ]) }}" class="btn btn-primary" style="min-width: 160px;" data-id="{{ $grade->id }}">{{ $grade->name }}</a>
         @endforeach
       </div>
       
@@ -39,11 +39,16 @@
             <img src="{{ asset($curriculum->thumbnail) }}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{ $curriculum->title}}</h5>
+              <p>curriculumsTB{{ $curriculum->id}}</p>
+              <p>GradeId{{ $curriculum->grade_id}}</p>
               {{-- <p class="card-text">{{ $curriculum->description}}</p> --}}
+              @foreach($delivery_times as $delivery_time)
               <p class="card-text">
-                7月13日　14:00 ～ 15:00<br>
-                7月13日　14:00 ～ 15:00<br>
+                @if ($curriculum->id === $delivery_time->curriculums_id)
+                {{ $delivery_time->delivery_from}} ～ {{ $delivery_time->delivery_to}}<br>
+                @endif
               </p>
+              @endforeach 
               <div>
                 {{-- 配信日時 --}}
                 {{-- 授業内容編集 --}}
@@ -57,7 +62,6 @@
         @endforeach      
       </div>
   </section>
-
 </div>
 </main>
 @endsection
