@@ -19,7 +19,13 @@
             <a href="#">戻る</a>
             <div>
                 <button>◀︎</button>
-                <span>2025年4月スケジュール</span>
+                <span>
+                    <?php
+                        $date = date('Y年m月');                      
+                        echo $date;
+                    ?>
+                    スケジュール
+                </span>
                 <button>▶︎</button>
             </div>
             <span>小学校1年生</span>
@@ -34,21 +40,21 @@
             <main>
                 @foreach ($curriculums as $curriculum)
                     @foreach ($delivery_times as $delivery_time)
-                        @if ($curriculum->id == $delivery_time->curriculums_id)
-                            <div>
+                        @if ($delivery_time->delivery_from > $date || $delivery_time->delivery_to < $date)
+                            @continue
+                        @endif
+                        <div>
                                 <img src="{{ $curriculum->thumbnail }}" alt="サムネイル">
                                 <h2>{{ $curriculum->title }}</h2>
                                 <ul>
-                                    @if ($curriculum->always_delivery_flg== 1)
+                                    @if ($curriculum->always_delivery_flg == 1)
                                         <li><a href="#">常時配信</a></li>
                                     @else
-                                            <li><a href="#">{{ $delivery_time->formatted_from }} ~ {{ $delivery_time->formatted_to }}</a></li>
+                                        <li><a href="#">{{ $delivery_time->delivery_from }} ~ {{ $delivery_time->delivery_to }}</a></li>
                                     @endif
                                 </ul>
                             </div>
-                        @else
-                            @continue
-                        @endif
+                        
                     @endforeach
                 @endforeach
             </main>

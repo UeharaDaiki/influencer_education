@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\DeliveryTime;
-use Illuminate\Support\Facades\DB;
 
-class DeliveryTimeSeeder extends Seeder
+class UsersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +15,8 @@ class DeliveryTimeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('curriculums')->truncate();
-        DeliveryTime::factory()->count(20)->create();
+        User::factory()->count(10)->create([
+            'password' => bcrypt('password'), // パスワードをハッシュ化して保存
+        ]);
     }
 }

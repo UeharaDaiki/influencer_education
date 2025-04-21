@@ -4,10 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Curriculum;
+use App\Models\DeliveryTime;
 use Illuminate\Support\Facades\DB;
 
-class CurriculumSeeder extends Seeder
+class DeliveryTimesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,6 +17,6 @@ class CurriculumSeeder extends Seeder
     public function run()
     {
         DB::table('curriculums')->truncate();
-        Curriculum::factory()->count(20)->create();
+        DeliveryTime::factory()->count(20)->create();
     }
 }
