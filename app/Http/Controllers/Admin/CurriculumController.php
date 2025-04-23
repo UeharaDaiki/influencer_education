@@ -32,20 +32,4 @@ class CurriculumController extends Controller
         $delivery_times = DeliveryTime::getDelivery_times($curriculums_id);
         return view('user.curriculum_list',compact('grades' , 'curriculums' , 'delivery_times' , 'grade_name'));
     }
-
-    // /**
-    //  * 授業一覧
-    //  * 各学年ボタン押下時処理
-    //  */
-    // public function showCurriculumList () {
-    //     $grades = Grade::getGrade();
-    //     $curriculums = Curriculums::getCurriculums($grades[0]->id);
-    //     $curriculums_id = $curriculums->pluck('id');
-    //     // dd($curriculums_id);
-    //     $delivery_times = DeliveryTime::getDelivery_times($curriculums_id);
-    //     // 条件付きで取得alwaysTB
-    //     // dd($delivery_times);
-    //     return view('user.curriculum_list',compact('grades' , 'curriculums' , 'delivery_times'));
-    // }
-
 }
