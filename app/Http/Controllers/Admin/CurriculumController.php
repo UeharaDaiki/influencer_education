@@ -21,6 +21,7 @@ class CurriculumController extends Controller
         if($id === null){
             // 初期表示
             $curriculums = Curriculums::getCurriculums($grades[0] -> id);
+            $grade_name = Grade::getGradeName($grades[0] -> id);
         } else {
             // 学年ボタン押下
             $grade_name = Grade::getGradeName($id);
