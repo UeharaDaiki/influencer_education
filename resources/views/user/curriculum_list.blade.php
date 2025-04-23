@@ -43,7 +43,7 @@
                   @foreach($delivery_times as $delivery_time)
                     <p class="card-text">
                       @if ($curriculum->id === $delivery_time->curriculums_id && $curriculum->always_delivery_flg === 0)
-                        {{ $delivery_time->delivery_from}} ～ {{ $delivery_time->delivery_to}}<br>
+                        {{ substr($delivery_time->delivery_from , 0 , 16)}} ～ {{ substr($delivery_time->delivery_to , 0 ,16)}}<br>
                       @endif
                     </p>
                   @endforeach 
