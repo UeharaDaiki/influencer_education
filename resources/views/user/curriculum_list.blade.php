@@ -4,21 +4,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>時間割</title>
+        <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     </head>
     <body>
-        <header>
-            <div>
-                <button>時間割</button>
-                <button>授業進捗</button>
-                <button>プロフィール設定</button>
-                <a href="#">ログアウト</a>
-            </div>
-        </header>
+        @include('user.layouts.app')
 
-        <div>
-            <a href="#">戻る</a>
-            <div>
-                <button>◀︎</button>
+        <div class="main_header">
+            <a href="#" class="back">戻る</a>
+            <div id="calendar">
+                <button class="prev_btn">◀︎</button>
                 <span>
                     <?php
                         $date = date('Y年m月');                      
@@ -26,23 +20,19 @@
                     ?>
                     スケジュール
                 </span>
-                <button>▶︎</button>
+                <button class="next_btn">▶︎</button>
             </div>
-            <span>{{ $gradeName }}</span>
+            <span class="grade_name">{{ $gradeName }}</span>
         </div>
 
         <div>
-            <aside>
-                @foreach ($grades as $grade)
-                    <button>{{ $grade->name }}</button><br>
-                @endforeach
-            </aside>
+            @include('user.grade_sidebar')
             <main>
                 @foreach ($curriculums as $curriculum)
-                    <div>
-                        <img src="{{ $curriculum->thumbnail }}" alt="サムネイル">
-                        <h2>{{ $curriculum->title }}</h2>
-                        <ul>
+                    <div class="curriculum">
+                        <img src="{{ $curriculum->thumbnail }}" alt="サムネイル" class="thumbnail">
+                        <h2 class="curriculum_title">{{ $curriculum->title }}</h2>
+                        <ul class="curriculum_times">
                             @if ($curriculum->always_delivery_flg == 1)
                                 <li><a href="#">常時配信</a></li>
                             @else
