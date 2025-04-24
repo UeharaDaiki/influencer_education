@@ -18,8 +18,8 @@ class CurriculumController extends Controller
      */
     public function showCurriculumList ($id = null) {
         $grades = Grade::getGrade();
-        if($id === null){
-            // 初期表示
+        if($id === null) {
+            // 初期表示　1年生
             $curriculums = Curriculums::getCurriculums($grades[0] -> id);
             $grade_name = Grade::getGradeName($grades[0] -> id);
         } else {
