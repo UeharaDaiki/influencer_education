@@ -21,12 +21,21 @@ class RedirectIfAuthenticated
     {
         $guards = empty($guards) ? [null] : $guards;
 
+        // foreach ($guards as $guard) {
+        //     if ($guard == "admin" && Auth::guard($guard)->check()) {   //追記
+        //         return redirect('admin/home');                        //追記
+        //     }
+        //     if (Auth::guard($guard)->check()) {
+        //         return redirect(RouteServiceProvider::HOME); //これがhomeにリダイレクトされる原因ではないのか？
+        //     }
+        // }
+
         foreach ($guards as $guard) {
-            if ($guard == "admin" && Auth::guard($guard)->check()) {   //追記
-                return redirect('admin/home');                        //追記
-            }
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+            // URLが「login」か「register」の時だけリダイレクトする
+            if ($request->is('login') || $request->is('register')) {
+                if (Auth::guard($guard)->check()) {
+                    return redirect('/top');
+                }
             }
         }
 

@@ -6,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>新規会員登録</title>
-    <link rel="stylesheet" href="{{ asset('style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 
-@extends('Users.layouts.app')
+@extends('Users.layouts.default')
 
 @section('content')
 
@@ -27,7 +26,7 @@
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="row mb-3">
-                        <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('ユーザーネーム') }}</label>
+                        <label for="name" class="col-md-4 col-form-label text-md-end">ユーザーネーム</label>
 
                         <div class="col-md-6">
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
@@ -41,7 +40,7 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="name_kana" class="col-md-4 col-form-label text-md-end">{{ __('カナ') }}</label>
+                        <label for="name_kana" class="col-md-4 col-form-label text-md-end">カナ</label>
 
                         <div class="col-md-6">
                             <input id="name_kana" type="text" class="form-control @error('name_kana') is-invalid @enderror" name="name_kana" value="{{ old('name_kana') }}" autocomplete="name_kana" autofocus>
@@ -55,7 +54,7 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('メールアドレス') }}</label>
+                        <label for="email" class="col-md-4 col-form-label text-md-end">メールアドレス</label>
 
                         <div class="col-md-6">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
@@ -69,7 +68,7 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('パスワード') }}</label>
+                        <label for="password" class="col-md-4 col-form-label text-md-end">パスワード</label>
 
                         <div class="col-md-6">
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
@@ -83,7 +82,7 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('パスワード確認') }}</label>
+                        <label for="password-confirm" class="col-md-4 col-form-label text-md-end">パスワード確認</label>
 
                         <div class="col-md-6">
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
@@ -92,9 +91,7 @@
 
                     <div class="row mb-0">
                         <div class="offset-md-4 " style="width: 140px; margin-top: 30px; margin-left: 40%;">
-                            <button type="submit" class="btn btn-danger w-100">
-                                {{ __('登録') }}
-                            </button>
+                            <button type="submit" class="btn btn-danger w-100">登録</button>
                         </div>
                     </div>
                 </form>

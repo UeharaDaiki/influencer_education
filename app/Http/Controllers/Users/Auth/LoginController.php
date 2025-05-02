@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Users\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -25,12 +27,32 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/top';
 
 
     public function showLoginForm()
     {
         return view('Users.auth.login');
+    }
+
+    public function top()
+    {
+        return view('Users.auth.top');
+    }
+
+    public function login(LoginRequest $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // 本来の流れにのせる
+            return $this->sendLoginResponse($request);
+        }
+
+        // ここ！失敗した時に元の画面へ戻してあげる
+        return back()->withErrors([
+            'email' => 'メールアドレスまたはパスワードが正しくありません。',
+        ])->withInput($request->only('email'));
     }
 
     /**
