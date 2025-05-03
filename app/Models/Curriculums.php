@@ -15,8 +15,12 @@ class Curriculums extends Model
         'thumbnail',
         'description',
         'video_url',
-        'alway_delivery_flg',
+        'always_delivery_flg',
         'grade_id'
+    ];
+
+    protected $casts = [
+        'always_delivery_flg' => 'boolean',
     ];
 
     // Gradeと紐付ける為に書く
@@ -39,5 +43,20 @@ class Curriculums extends Model
     // 初期表示　1年取得
     public static function getCurriculums($grade_id) {
         return self::where('grade_id', $grade_id)->get();  
+    }
+
+    // 授業編集画面表示
+    public static function getEditCurriculum($id) {
+        return self::where('id', $id)->get();
+        //::find($id);でも同じ結果
+    }
+
+    // curriculum更新処理
+    public static function updateCurriculum($update_curriculum , $id) {
+        //findOrFail$idが一致するデータを取得
+        $curriculum = self::findOrFail($id);
+        //fill相違がある箇所を比較（頭に記載の$fillable）
+        $curriculum -> fill($update_curriculum);
+        return $curriculum->save();
     }
 }

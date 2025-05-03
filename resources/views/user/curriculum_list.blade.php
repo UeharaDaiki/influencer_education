@@ -19,7 +19,7 @@
         <div class="d-flex justify-content-start gap-2 mb-3">
           {{-- 新規登録 --}}
           <a href="#" class="btn btn-success mb-3">新規登録</a>
-          {{-- 表示中がくねん --}}
+          {{-- 表示中学年 --}}
           <button type="button" class="btn btn-primary" style="margin-left: 110px">{{ $grade_name }}</button>
         </div>
       </aside>
@@ -39,10 +39,10 @@
                 <img src="{{ asset($curriculum->thumbnail) }}" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{ $curriculum->title}}</h5>
-                  {{-- <p class="card-text">{{ $curriculum->description}}</p> --}}
+                  <p class="card-text">{{ $curriculum->description}}</p>
                   @foreach($delivery_times as $delivery_time)
                     <p class="card-text">
-                      @if ($curriculum->id === $delivery_time->curriculums_id && $curriculum->always_delivery_flg === 0)
+                      @if ($curriculum->id == $delivery_time->curriculums_id && $curriculum->always_delivery_flg == 0)
                         {{ substr($delivery_time->delivery_from , 0 , 16)}} ～ {{ substr($delivery_time->delivery_to , 0 ,16)}}<br>
                       @endif
                     </p>
@@ -50,9 +50,9 @@
                   <div>
                     {{-- 配信日時 --}}
                     {{-- 授業内容編集 --}}
-                    <a href="#" class="btn btn-success btn-sm">授業内容編集</a>
+                    <a href="{{ route('admin.show.curriculum.edit', ['id' => $curriculum->id ]) }}" class="btn btn-success btn-sm">授業内容編集</a>
                     {{-- 配信日時編集 --}}
-                    <a href="#" class="btn btn-success btn-sm">配信日時編集</a>
+                    <a href="{{ route('admin.show.delivery.edit', ['id' => $curriculum->id ]) }}" class="btn btn-success btn-sm">配信日時編集</a>
                   </div>
                 </div>
               </div>

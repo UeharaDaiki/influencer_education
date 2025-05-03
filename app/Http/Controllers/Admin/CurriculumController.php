@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ItemRequest;
 use Illuminate\Http\Request;
 use App\Models\Grade;
 use App\Models\Curriculums;
 use App\Models\DeliveryTime;
+use App\Http\Requests\CurriculumsRequest;
+use Illuminate\Database\QueryException;
+
 
 class CurriculumController extends Controller
 {
@@ -31,6 +35,48 @@ class CurriculumController extends Controller
         $curriculums_id = $curriculums -> pluck('id');
         // 公開期間
         $delivery_times = DeliveryTime::getDelivery_times($curriculums_id);
+        // dd($delivery_times);
         return view('user.curriculum_list',compact('grades' , 'curriculums' , 'delivery_times' , 'grade_name'));
+    }
+
+    /**
+     * 授業編集
+     * 表示
+     */
+    public function showCurriculumEdit($id) {
+        //学年プルダウン用
+        $grades = Grade::getGrade();
+        //該当curriculums編集用データ
+        $edit_curriculum = Curriculums::getEditCurriculum($id);
+        $id = $id;
+        // $curriculums_id = $curriculums -> pluck('id');
+        // 公開期間
+        // $delivery_times = DeliveryTime::getDelivery_times($curriculums_id);
+        return view('user.curriculum_edit',compact('grades','edit_curriculum','id'));
+    }
+
+    /**
+     * 授業編集
+     * 更新処理
+     */
+    public function updateCurriculum(CurriculumsRequest $request , $id) {
+        // dd($request->validated());
+        if ($request -> hasFile('curriculum_img')) {
+            $path = $request -> file('curriculum_img') -> store('images', 'public');
+            //更新した後の画像pathを'storage/'に揃える
+            $img_path = 'storage/' . $path;
+        }
+        if(isset($img_path)){
+            $update_curriculum = array_merge($update_curriculum, ['thumbnail' => $img_path]);   
+        }
+        $update_curriculum = $request -> validated();
+        try {
+            Curriculums::updateCurriculum($update_curriculum , $id);
+            return redirect() -> route('admin.show.curriculum.edit', [$id]);
+        } catch (QueryException $e) {
+            return redirect() -> route('admin.show.curriculum.edit', [$id]) -> with(['error' => 'データベースエラー'], 500);
+        } catch (\Exception $e) {
+            return redirect() -> route('admin.show.curriculum.edit', [$id]) -> with(['error' => '処理に失敗しました'], 500);
+        }
     }
 }
