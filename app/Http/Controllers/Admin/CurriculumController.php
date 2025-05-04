@@ -35,7 +35,6 @@ class CurriculumController extends Controller
         $curriculums_id = $curriculums -> pluck('id');
         // 公開期間
         $delivery_times = DeliveryTime::getDelivery_times($curriculums_id);
-        // dd($delivery_times);
         return view('user.curriculum_list',compact('grades' , 'curriculums' , 'delivery_times' , 'grade_name'));
     }
 
@@ -49,9 +48,7 @@ class CurriculumController extends Controller
         //該当curriculums編集用データ
         $edit_curriculum = Curriculums::getEditCurriculum($id);
         $id = $id;
-        // $curriculums_id = $curriculums -> pluck('id');
         // 公開期間
-        // $delivery_times = DeliveryTime::getDelivery_times($curriculums_id);
         return view('user.curriculum_edit',compact('grades','edit_curriculum','id'));
     }
 
@@ -70,7 +67,6 @@ class CurriculumController extends Controller
         if(isset($img_path)){
             $update_curriculum = array_merge($update_curriculum, ['thumbnail' => $img_path]);   
         }
-        // dd($update_curriculum);
         try {
             Curriculums::updateCurriculum($update_curriculum , $id);
             return redirect() -> route('admin.show.curriculum.list');
