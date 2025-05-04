@@ -36,7 +36,7 @@
           @foreach($curriculums as $curriculum)
             <div class="col" style="padding-left: 50px">
               <div class="card">
-                <img src="{{ asset($curriculum->thumbnail) }}" class="card-img-top" alt="...">
+                <img src="{{ asset($curriculum->thumbnail ?? 'storage/images/default_img.png') }}" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{ $curriculum->title}}</h5>
                   <p class="card-text">{{ $curriculum->description}}</p>

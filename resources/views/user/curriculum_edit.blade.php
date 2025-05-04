@@ -16,9 +16,9 @@
         @csrf
         @foreach ( $edit_curriculum as $edit_curriculum )
         <div>
-          <img src="{{ asset($edit_curriculum->thumbnail) }}" class="card-img-top w-25" alt="サムネイル">
+          <img src="{{ asset($edit_curriculum->thumbnail ?? 'storage/images/default_img.png') }}" class="card-img-top w-25" alt="サムネイル">
           <label for="img">サムネイル</label>
-          <input type="hidden" name="curriculum_img" id="img" value="{{ $edit_curriculum->thumbnail }}">
+          <input type="hidden" name="curriculum_img" id="img_old" value="{{ $edit_curriculum->thumbnail }}">
           <input type="file" name="curriculum_img" id="img">
         </div>
         <div class="mb-3 row">
