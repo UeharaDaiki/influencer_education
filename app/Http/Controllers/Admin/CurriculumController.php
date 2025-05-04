@@ -60,19 +60,20 @@ class CurriculumController extends Controller
      * 更新処理
      */
     public function updateCurriculum(CurriculumsRequest $request , $id) {
-        // dd($request->validated());
         if ($request -> hasFile('curriculum_img')) {
             $path = $request -> file('curriculum_img') -> store('images', 'public');
             //更新した後の画像pathを'storage/'に揃える
             $img_path = 'storage/' . $path;
         }
+        // バリデしたものを取得する（必要なものはバリデクラスにかく）
+        $update_curriculum = $request -> validated();
         if(isset($img_path)){
             $update_curriculum = array_merge($update_curriculum, ['thumbnail' => $img_path]);   
         }
-        $update_curriculum = $request -> validated();
+        // dd($update_curriculum);
         try {
             Curriculums::updateCurriculum($update_curriculum , $id);
-            return redirect() -> route('admin.show.curriculum.edit', [$id]);
+            return redirect() -> route('admin.show.curriculum.list');
         } catch (QueryException $e) {
             return redirect() -> route('admin.show.curriculum.edit', [$id]) -> with(['error' => 'データベースエラー'], 500);
         } catch (\Exception $e) {

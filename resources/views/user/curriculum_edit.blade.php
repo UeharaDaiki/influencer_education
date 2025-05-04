@@ -7,6 +7,11 @@
   </div>
   <section>
     <div class="col-md-6 offset-md-3">
+      @if (session('error'))
+        <div class="alert alert-danger" role="alert">
+          {{ session('error') }}
+        </div>
+      @endif
       <form method="POST" action={{ route('admin.curriculum.update',['id'=>$id]) }} enctype="multipart/form-data">
         @csrf
         @foreach ( $edit_curriculum as $edit_curriculum )
@@ -19,7 +24,7 @@
         <div class="mb-3 row">
           <label for="grade_id" class="col-sm-2 col-form-label">学年</label>
           <div class="col-sm-10">
-            <select name="grade" id="grade_id">
+            <select name="grade_id" id="grade_id">
               @foreach ($grades as $grade)
                 <option value="{{ $grade->id }}" {{ $grade->id == $edit_curriculum->grade_id ? 'selected' : '' }}>{{ $grade->name }}</option>
               @endforeach

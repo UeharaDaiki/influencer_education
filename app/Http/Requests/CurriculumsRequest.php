@@ -24,9 +24,11 @@ class CurriculumsRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'         => 'required',
+            'title'        => 'required',
             'description'  => 'required',
-            'video_url'    => 'required'
+            'video_url'    => 'required',
+            'grade_id'     => 'required',
+            'always_delivery_flg' => 'required'
         ];
     }
 
@@ -35,6 +37,7 @@ class CurriculumsRequest extends FormRequest
             'title.required' => '授業名は入力必須項目です。',
             'description.required' => '授業概要は入力必須項目です。',
             'video_url.required' => '動画URLは入力必須項目です。',
+            'grade_id' => '学年は入力必須項目です。',
         ];
     }
 }
