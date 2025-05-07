@@ -22,22 +22,11 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/top';
-
+    protected $redirectTo = '/user/top';
 
     public function showLoginForm()
     {
         return view('Users.auth.login');
-    }
-
-    public function top()
-    {
-        return view('Users.auth.top');
     }
 
     public function login(LoginRequest $request)

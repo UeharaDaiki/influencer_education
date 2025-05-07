@@ -5,8 +5,8 @@ html, body {
 
 nav.navbar {
     background-color: #f26a44;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 /* メニューボタン共通スタイル */
@@ -19,6 +19,7 @@ nav a.menu-btn {
     margin-right: 16px;
     font-weight: bold;
     display: inline-block;
+    font-size: 18px;
 }
 
 /* ログアウトリンク */
@@ -29,3 +30,49 @@ nav a.logout-link {
     margin-left: auto;
     font-size: 22px;
 }
+
+.banner-area{
+    margin-left: 650px;
+    margin-top: 120px;
+}
+
+.news-title{
+    margin-left: 350px;
+
+}
+
+.box2{
+    padding: 90px;
+    margin-left: 370px;
+    width: 500px;
+    background: #FFF;
+    border: solid 3px black;/*線*/
+    border-radius: 25px;/*角の丸み*/
+}
+
+.box2 p {
+    margin: 0; 
+    padding: 0;
+}
+
+.carousel-indicator {
+  display: flex;              /* 横並びにする */
+  justify-content: center;    /* 中央寄せ */
+  margin-top: 160px;           /* 上との間隔 */
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;              /* 左右の間隔 */
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+
+}
+
+.dot.active {
+  background-color: #555;     /* アクティブなドットの色 */
+}
+

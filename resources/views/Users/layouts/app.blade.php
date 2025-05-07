@@ -9,21 +9,19 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net"> <!-- フォント読み込みのパフォーマンス向上 -->
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet"> <!-- Nunitoフォントの読み込み -->
     <link rel="stylesheet" href="{{ asset('style.css') }}">
-
 </head>
 
 <body>
-
     <!-- ▼ ナビゲーションバーの開始 -->
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a style="margin-left: 100px;" href="{{route('showCurriculumList')}}" class="menu-btn">時間割</a>
-            <a style="margin-left: 50px;" href="{{route('showProgress')}}" class="menu-btn">授業進捗</a>
-            <a style="margin-left: 50px;" href="{{route('showProfileForm')}}" class="menu-btn">プロフィール設定</a>
+            <a style="margin-left: 0px;" href="{{route('showProgress')}}" class="menu-btn">授業進捗</a>
+            <a style="margin-left: 0px;" href="{{route('showProfileForm')}}" class="menu-btn">プロフィール設定</a>
             <!-- ▼ ログアウト実行用フォーム（非表示） -->
             <a href="{{ route('login') }}"
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                style="margin-left: 0px;" class="logout-link">ログアウト</a>
+                style="margin-left: 600px;" class="logout-link">ログアウト</a>
 
             <form id="logout-form" action="{{ route('logout')}}" method="post" class="d-none">
                 @csrf
