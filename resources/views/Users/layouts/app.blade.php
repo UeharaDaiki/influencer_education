@@ -15,15 +15,15 @@
     <!-- ▼ ナビゲーションバーの開始 -->
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
-            <a style="margin-left: 100px;" href="{{route('showCurriculumList')}}" class="menu-btn">時間割</a>
-            <a style="margin-left: 0px;" href="{{route('showProgress')}}" class="menu-btn">授業進捗</a>
-            <a style="margin-left: 0px;" href="{{route('showProfileForm')}}" class="menu-btn">プロフィール設定</a>
+            <a style="margin-left: 100px;" href="{{route('usershowCurriculumList')}}" class="menu-btn">時間割</a>
+            <a style="margin-left: 0px;" href="{{route('usershowProgress')}}" class="menu-btn">授業進捗</a>
+            <a style="margin-left: 0px;" href="{{route('usershowProfileForm')}}" class="menu-btn">プロフィール設定</a>
             <!-- ▼ ログアウト実行用フォーム（非表示） -->
-            <a href="{{ route('login') }}"
+            <a href="{{ route('userlogin') }}"
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                 style="margin-left: 600px;" class="logout-link">ログアウト</a>
 
-            <form id="logout-form" action="{{ route('logout')}}" method="post" class="d-none">
+            <form id="logout-form" action="{{ route('userlogout')}}" method="post" class="d-none">
                 @csrf
             </form>
         </div>

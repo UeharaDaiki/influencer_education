@@ -10,9 +10,9 @@ class TopController extends Controller
 {
     public function top()
     {
-        $banner = Banner::latest()->first(); // 最も新しいバナー画像1件
+        $banners = Banner::orderBy('id', 'desc')->take(4)->get();
         $article_top = Article::orderBy('posted_date', 'desc')->take(5)->get();
 
-        return view('Users.auth.top', compact('banner', 'article_top'));
+        return view('Users.auth.top', compact('banners', 'article_top'));
     }
 }

@@ -23,21 +23,18 @@ use App\Http\Controllers\Users\Auth\RegisterController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::prefix('user')->namespace('User')->name('user')->group(function () {
+    Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [LoginController::class, 'login']);
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('user/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('user/login', [LoginController::class, 'login']);
-Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-Route::post('logout', [LoginController::class, 'logout']);
-
-
-Route::get('user/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('user/register', [RegisterController::class, 'register']);
-
-Route::get('user/top', [TopController::class, 'top'])->name('top');
-Route::get('user/article_top', [TopController::class, 'article_top'])->name('article_top');
-Route::get('user/article/{id}', [ArticleController::class, 'show'])->name('users.auth.article');
-
-// 共通ヘッダーの画面遷移
-Route::get('user/progress', [ProgressController::class, 'showProgress'])->name('showProgress');
-Route::get('user/ProfileForm', [ProfileController::class, 'showProfileForm'])->name('showProfileForm');
-Route::get('user/CurriculumList', [CurriculumController::class, 'showCurriculumList'])->name('showCurriculumList');
+    Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [RegisterController::class, 'register']);
+    Route::get('top', [TopController::class, 'top'])->name('top');
+    Route::get('article_top', [TopController::class, 'article_top'])->name('article_top');
+    Route::get('article/{id}', [ArticleController::class, 'show'])->name('article.show');
+    // 共通ヘッダーの画面遷移
+    Route::get('progress', [ProgressController::class, 'showProgress'])->name('showProgress');
+    Route::get('ProfileForm', [ProfileController::class, 'showProfileForm'])->name('showProfileForm');
+    Route::get('CurriculumList', [CurriculumController::class, 'showCurriculumList'])->name('showCurriculumList');
+});

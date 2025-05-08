@@ -16,14 +16,14 @@
 @section('content')
 
 
-<a href="{{route('login')}}" style="color: black; margin-left: 70%;">ログインはこちら</a>
+<a href="{{route('userlogin')}}" style="color: black; margin-left: 70%;">ログインはこちら</a>
 <h1 class="title" style="margin-left: 45%;">新規会員登録</h1>
 
 <div class="container">
     <div class="row justify-content-center" style="margin-top: 40px;">
         <div class="col-md-8">
             <div class="card-body">
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{ route('userregister') }}">
                     @csrf
                     <div class="row mb-3">
                         <label for="name" class="col-md-4 col-form-label text-md-end">ユーザーネーム</label>

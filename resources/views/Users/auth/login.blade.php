@@ -13,14 +13,14 @@
 @extends('Users.layouts.default')
 
 @section('content')
-<a href="{{route('register')}}" style="color: black; margin-left: 70%;">新規会員登録はこちら</a>
+<a href="{{route('userregister')}}" style="color: black; margin-left: 70%;">新規会員登録はこちら</a>
 <h1 class="title" style="margin-left: 45%;">ログイン</h1>
 
 <div class="container">
     <div class="row justify-content-center" style="margin-top: 75px;">
         <div class="col-md-8">
             <div class="card-body">
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('userlogin') }}">
                     @csrf
                     <div class="row mb-3">
                         <label for="email" class="col-md-4 col-form-label text-md-end">メールアドレス</label>
