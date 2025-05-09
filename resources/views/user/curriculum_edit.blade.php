@@ -63,7 +63,7 @@
         </div>
         <div class="form-check">
           <input name="always_delivery_flg" type="hidden" value="0">
-          <input class="form-check-input" type="checkbox" value="1" id="always_delivery_flg" name="always_delivery_flg">
+          <input class="form-check-input" type="checkbox" value="1" {{ $edit_curriculum->always_delivery_flg == 1 ? 'checked' : '' }} id="always_delivery_flg" name="always_delivery_flg">
           <label class="form-check-label" for="always_delivery_flg">
             常時公開
           </label>
