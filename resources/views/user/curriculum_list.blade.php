@@ -18,7 +18,7 @@
       <aside>
         <div class="d-flex justify-content-start gap-2 mb-3">
           {{-- 新規登録 --}}
-          <a href="#" class="btn btn-success mb-3">新規登録</a>
+          <a href="{{ route('admin.show.curriculum.registration') }}"  class="btn btn-success mb-3">新規登録</a>
           {{-- 表示中学年 --}}
           <button type="button" class="btn btn-primary" style="margin-left: 110px">{{ $grade_name }}</button>
         </div>

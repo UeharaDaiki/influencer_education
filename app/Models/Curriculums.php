@@ -45,6 +45,11 @@ class Curriculums extends Model
         return self::where('grade_id', $grade_id)->get();  
     }
 
+    // 新規登録処理
+    public static function createCurriculumRegistration($register_curriculum) {
+        return self::create($register_curriculum);
+    }
+
     // 授業編集画面表示
     public static function getEditCurriculum($id) {
         return self::where('id', $id)->get();

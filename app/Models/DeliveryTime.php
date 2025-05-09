@@ -27,4 +27,13 @@ class DeliveryTime extends Model
     public static function getDelivery_times($id) {
         return self::whereIn('curriculums_id', $id)->get();
     }
+
+    // 新規登録
+    public static function createDeliveryTimes($id , $from , $to) {
+        return self::create([
+            'curriculums_id' => $id, 
+            'delivery_from' => $from,
+            'delivery_to' => $to
+        ]);
+    }
 }

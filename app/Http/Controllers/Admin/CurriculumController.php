@@ -10,6 +10,7 @@ use App\Models\Curriculums;
 use App\Models\DeliveryTime;
 use App\Http\Requests\CurriculumsRequest;
 use Illuminate\Database\QueryException;
+use Carbon\Carbon;
 
 
 class CurriculumController extends Controller
@@ -39,6 +40,39 @@ class CurriculumController extends Controller
     }
 
     /**
+     * 新規登録
+     * 画面表示
+     */
+    public function showCurriculumRegistration() {
+        //学年プルダウン用
+        $grades = Grade::getGrade();
+        return view('user.curriculum_registration',compact('grades'));
+    }
+
+    /**
+     * 新規登録
+     * 登録処理
+     */
+    public function curriculumRegistration(CurriculumsRequest $request) {
+        if ($request -> hasFile('curriculum_img')) {
+            $path = $request -> file('curriculum_img') -> store('images', 'public');
+            //登録する画像pathを'storage/'に揃える
+            $img_path = 'storage/' . $path;
+        }
+        $register_curriculum = $request -> validated();
+        if(isset($img_path)){
+            $register_curriculum = array_merge($register_curriculum, ['thumbnail' => $img_path]);   
+        }
+        // DateTimeの値をCarbonインスタンスに変換
+        $from= Carbon::createFromFormat('Y-m-d\TH:i', $request['delivery-from']);
+        $to= Carbon::createFromFormat('Y-m-d\TH:i', $request['delivery-to']);
+        //該当curriculums編集用データ
+        $registering_curriculum = Curriculums::createCurriculumRegistration($register_curriculum);
+        $delivery_times = DeliveryTime::createDeliveryTimes($registering_curriculum->id , $from , $to);
+        return redirect() -> route('admin.show.curriculum.list');
+    }
+
+    /**
      * 授業編集
      * 表示
      */
@@ -51,7 +85,6 @@ class CurriculumController extends Controller
         // 公開期間
         return view('user.curriculum_edit',compact('grades','edit_curriculum','id'));
     }
-
     /**
      * 授業編集
      * 更新処理
