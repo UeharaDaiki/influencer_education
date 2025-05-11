@@ -27,9 +27,11 @@ Route::prefix('user')->namespace('Users')->name('user.')->group(function () {
 
 });
 Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
+    Route::get('/top', [App\Http\Controllers\Admin\AdminTopController::class, 'showTop'])->name('show.top');
     Route::get('/article_list', [App\Http\Controllers\Admin\ArticleController::class, 'showArticleList'])->name('show.article.list');
     Route::get('/article_create', [App\Http\Controllers\Admin\ArticleController::class, 'showArticleCreate'])->name('show.article.create');
     Route::get('/article_edit/{id}', [App\Http\Controllers\Admin\ArticleController::class, 'showArticleEdit'])->name('show.article.edit');
     Route::post('/article_delete/{id}', [App\Http\Controllers\Admin\ArticleController::class, 'showArticleDelete'])->name('show.article.delete');
     Route::post('/article_edit/{id}', [App\Http\Controllers\Admin\ArticleController::class, 'articleEdit'])->name('article.edit');
+    Route::post('/article_create', [App\Http\Controllers\Admin\ArticleController::class, 'articleCreate'])->name('article.create');
 });

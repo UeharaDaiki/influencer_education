@@ -1,0 +1,67 @@
+.article-list{
+    font-size: xx-large;
+    margin-left: 10px;
+}
+.regist-button {
+    display: inline-block;
+    background-color: #0a8ea6;
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+    font-size: large;
+    color: white;
+    border: none;
+    text-decoration: none;
+}
+.date{
+    display:inline-block;
+    margin-left:40px;
+}
+.title{
+    display:inline-block;
+    margin-left:100px;
+}
+.date-list{
+    display:inline-block;
+    margin-left:40px;
+    flex-wrap: nowrap;
+}
+.title-list{
+    display:inline-block;
+    text-align: left;
+    margin-left:40px;
+    flex-grow: 1;
+}
+.article-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: flex-start;
+    width: 60%;
+}
+
+.detail-btn, .delete-btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.detail-btn {
+    background-color: blue;
+    color: white;
+    margin-right: 10px;
+    text-decoration:none;
+}
+
+.delete-btn {
+    background-color: red;
+    color: white;
+}
+.button-group {
+    display: flex;
+    margin-left: 20px;
+}
