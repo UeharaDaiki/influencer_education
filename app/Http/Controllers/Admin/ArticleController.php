@@ -5,12 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Models\Article;
-use App\Models\Curriculum;
-use App\Models\CurriculumProgress;
-use App\Models\Curriculums;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\ArticleRequest;
 
 class ArticleController extends Controller
 {
@@ -70,10 +67,37 @@ class ArticleController extends Controller
         return view('admin.article_edit',compact("article"));
     }
 
-    public function articleEdit(Request $request,$id)
+    public function articleEdit(ArticleRequest $request,$id)
     {
-        $model=new Article;
-        $model->updateArticle($request,$id);
-        return redirect()->route('admin.show.article.edit', ['id' => $id]);        
-    } 
+        try {
+            DB::beginTransaction();
+
+            $model = new Article;
+            $model->updateArticle($request, $id);
+
+            DB::commit();
+
+            return redirect()->route('admin.show.article.list');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back();
+        }
+    }
+    
+    public function articleCreate(ArticleRequest $request)
+    {
+        try {
+            DB::beginTransaction();
+
+            $model=new Article;
+            $model->createArticle($request);
+
+            DB::commit();
+
+        return redirect()->route('admin.show.article.list');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back();
+        } 
+    }
 }
