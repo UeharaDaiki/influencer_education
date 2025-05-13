@@ -63,13 +63,23 @@ class CurriculumController extends Controller
         if(isset($img_path)){
             $register_curriculum = array_merge($register_curriculum, ['thumbnail' => $img_path]);   
         }
-        // DateTimeの値をCarbonインスタンスに変換
-        $from= Carbon::createFromFormat('Y-m-d\TH:i', $request['delivery-from']);
-        $to= Carbon::createFromFormat('Y-m-d\TH:i', $request['delivery-to']);
-        //該当curriculums編集用データ
-        $registering_curriculum = Curriculums::createCurriculumRegistration($register_curriculum);
-        $delivery_times = DeliveryTime::createDeliveryTimes($registering_curriculum->id , $from , $to);
-        return redirect() -> route('admin.show.curriculum.list');
+        try{
+            //該当curriculums編集用データ
+            $registering_curriculum = Curriculums::createCurriculumRegistration($register_curriculum);
+            // filled(nullまたは空文字ではない時)
+            if($request->filled('delivery-from') && $request->filled('delivery-to')){
+                // DateTimeの値をCarbonインスタンスに変換
+                $from= Carbon::createFromFormat('Y-m-d\TH:i', $request['delivery-from']);
+                $to= Carbon::createFromFormat('Y-m-d\TH:i', $request['delivery-to']);
+                $delivery_times = DeliveryTime::createDeliveryTimes($registering_curriculum->id , $from , $to);
+            }
+            return redirect() -> route('admin.show.curriculum.list');
+        } catch (QueryException $e) {
+            return redirect() -> route('admin.show.curriculum.registration') -> with(['error' => 'データベースエラー'], 500);
+        } catch (\Exception $e) {
+            return redirect() -> route('admin.show.curriculum.registration') -> with(['error' => '処理に失敗しました'], 500);
+        }
+        
     }
 
     /**
