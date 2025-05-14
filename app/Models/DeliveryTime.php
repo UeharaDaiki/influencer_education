@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Curriculum;
 
 class DeliveryTime extends Model
 {
@@ -16,4 +17,11 @@ class DeliveryTime extends Model
         'created_at',
         'updated_at',
     ];
+
+        public function curriculums()
+    {
+        return $this->belongsTo(Curriculum::class, 'curriculums_id');
+    }
+
 }
+

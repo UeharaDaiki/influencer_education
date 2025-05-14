@@ -18,7 +18,7 @@ class CurriculumFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(3),
-            'thumbnail' => $this->faker->imageUrl(),
+            'thumbnail' => 'https://placehold.jp/150x150.png',
             'description' => $this->faker->paragraph(),
             'video_url' => $this->faker->url(),
             'always_delivery_flg' => $this->faker->boolean(),

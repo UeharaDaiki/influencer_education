@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\CurriculumController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +19,35 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('user')->namespace('User')->name('user.')->group(function () {
+Route::prefix('user')->name('user.')->group(function () {
+
+    /* トップ画面 */
+    Route::get('/top', function () {
+        return 'トップ画面（仮）';
+    })->name('show.top');
+
+    /* ログイン画面 */
+    Route::get('/login', function () {
+        return 'ログイン画面（仮）';
+    })->name('show.login');
+
+    /* ユーザープロフィール */
+    Route::get('/profile', function () {
+        return 'ユーザープロフィール（仮）';
+    })->name('show.profile');
+
+    /* 授業進捗画面 */
+    Route::get('/progress', function () {
+        return '授業進捗画面（仮）';
+    })->name('show.progress');
+    
+    /* 配信画面 */
+    Route::get('/delivery/{id}', function ($id) {
+        return '配信画面(仮)'. $id;
+    })->name('show.delivery');
+    
+    /* 時間割ページ */
     Route::get('/curriculum_list', [CurriculumController::class, 'showCurriculumList'])->name('show.curriculum');
+    
 });
+

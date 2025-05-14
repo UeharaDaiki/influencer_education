@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\DeliveryTime;
 
 class Curriculum extends Model
 {
@@ -21,4 +22,11 @@ class Curriculum extends Model
         'created_at',
         'updated_at',
     ];
+
+        public function deliveryTimes()
+    {
+        return $this->hasMany(DeliveryTime::class, 'curriculums_id');
+    }
 }
+
+
