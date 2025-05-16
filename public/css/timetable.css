@@ -55,11 +55,13 @@
     position: fixed;
     top: 120px;
     left: 200px;
+    z-index: 1000;
 }
 
 .active_month {
     font-weight: bold;
     font-size: 25px;
+    z-index: 1000;
 }
 
 .grade_name {
@@ -73,6 +75,7 @@
     font-weight: bold;
     text-align: center;
     color: white; 
+    z-index: 1000;
 }
 
 .grade_name:disabled {
@@ -81,26 +84,27 @@
   }
 
 #curriculum_list {
-    position: fixed;
+    position: absolute;
     top: 200px;
     left: 250px;
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    position: absolute;
+
 }
 
 .curriculum {
-    scroll-margin-top: 120px;
     width: 250px;
     height: 350px;
     border: 1px solid #ccc;
 }
 
 .curriculum_title {
-    font-size: 16px;
-    padding: 5px 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    padding-left: 10px;
 }
 
 .curriculum ul {
@@ -120,13 +124,14 @@
 .curriculum_times {
     display: flex;
     flex-direction: column;
-    gap: 10px;
     font-weight: bold;
 }
 
 .curriculum_times a {
+    float: left;
     text-decoration: none;
     color: black;
-    font-size: 12px; 
-    padding: 5px 10px;
+    font-size: 12px;
+    margin-left: 10px;
+
 }

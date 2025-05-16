@@ -121,9 +121,9 @@ $(function() {
                     if (curriculum.always_delivery_flg == 1) {
                         deliveryInfo = `<li><a href="/user/delivery/1">常時配信</a></li>`;
                     } else {
-                        curriculum.delivery_times.forEach(time => {
-                            console.log('time オブジェクト:', time);
-                            deliveryInfo += `<li><a href="/user/delivery/1">${time.delivery_from} ~ ${time.delivery_to}</a></li>`;
+                        curriculum.delivery_times.forEach(deliveryTime => {
+                            console.log('time オブジェクト:', deliveryTime);
+                            deliveryInfo += `<li><a href="/user/delivery/1">${deliveryTime.formatted_from} ~ ${deliveryTime.formatted_to}</a></li>`;
                         });
                     }
 
@@ -135,7 +135,7 @@ $(function() {
                     const curriculumHtml = `
                         <div class="curriculum">
                             <img src="${curriculum.thumbnail}" alt="サムネイル" class="thumbnail">
-                            <p class="curriculum_title">${curriculum.title}</p>
+                            <a href="/user/delivery/1" class="curriculum_title">${curriculum.title}</a>
                             <ul class="curriculum_times">
                                 ${deliveryInfo}
                             </ul>

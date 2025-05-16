@@ -17,6 +17,6 @@ class CurriculumsSeeder extends Seeder
     public function run()
     {
         DB::table('curriculums')->truncate();
-        Curriculum::factory()->count(20)->create();
+        Curriculum::factory()->count(50)->create();
     }
 }

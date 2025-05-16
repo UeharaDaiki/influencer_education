@@ -45,7 +45,7 @@ Route::prefix('user')->name('user.')->group(function () {
     Route::get('/delivery/{id}', function ($id) {
         return '配信画面(仮)'. $id;
     })->name('show.delivery');
-    
+
     /* 時間割ページ */
     Route::get('/curriculum_list', [CurriculumController::class, 'showCurriculumList'])->name('show.curriculum');
     

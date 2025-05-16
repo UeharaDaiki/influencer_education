@@ -37,15 +37,15 @@ class CurriculumController extends Controller
         ->where('grade_id', $gradeId)
         ->get();
         
-        foreach ($curriculums as $curriculum) {
-            if ($curriculum->deliveryTimes) {
-                foreach ($curriculum->deliveryTimes as $delivery_time) {
-                    // 配信時間のフォーマットを整形
-                    $delivery_time->formatted_from = Carbon::parse($delivery_time->delivery_from)->format('Y-m-d H:i');
-                    $delivery_time->formatted_to = Carbon::parse($delivery_time->delivery_to)->format('Y-m-d H:i');
-                }
-            }
-        }
+        // foreach ($curriculums as $curriculum) {
+        //     if ($curriculum->deliveryTimes) {
+        //         foreach ($curriculum->deliveryTimes as $delivery_time) {
+        //             // 配信時間のフォーマットを整形
+        //             $delivery_time->formatted_from = Carbon::parse($delivery_time->delivery_from)->format('n月j日 H:i');
+        //             $delivery_time->formatted_to = Carbon::parse($delivery_time->delivery_to)->format('n月j日 H:i');
+        //         }
+        //     }
+        // }
 
         return view('user.curriculum_list', compact('grades', 'curriculums', 'gradeName', 'gradeId', 'currentYear', 'currentMonth'));
     }
@@ -66,15 +66,15 @@ class CurriculumController extends Controller
         ->where('grade_id', $gradeId)
         ->get();
 
-        // 整形処理を追加
-        foreach ($curriculums as $curriculum) {
-            if ($curriculum->deliveryTimes) {
-                foreach ($curriculum->deliveryTimes as $delivery_time) {
-                    $delivery_time->formatted_from = Carbon::parse($delivery_time->delivery_from)->format('Y-m-d H:i');
-                    $delivery_time->formatted_to = Carbon::parse($delivery_time->delivery_to)->format('Y-m-d H:i');
-                }
-            }
-        }
+        // // 整形処理を追加
+        // foreach ($curriculums as $curriculum) {
+        //     if ($curriculum->deliveryTimes) {
+        //         foreach ($curriculum->deliveryTimes as $delivery_time) {
+        //             $delivery_time->formatted_from = Carbon::parse($delivery_time->delivery_from)->format('n月j日 H:i');
+        //             $delivery_time->formatted_to = Carbon::parse($delivery_time->delivery_to)->format('n月j日 H:i');
+        //         }
+        //     }
+        // }
 
         return response()->json($curriculums);
     }

@@ -17,6 +17,6 @@ class DeliveryTimesSeeder extends Seeder
     public function run()
     {
         DB::table('curriculums')->truncate();
-        DeliveryTime::factory()->count(20)->create();
+        DeliveryTime::factory()->count(50)->create();
     }
 }

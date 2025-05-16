@@ -34,13 +34,13 @@
                 @if($curriculum->always_delivery_flg == 1 || $curriculum->deliveryTimes->isNotEmpty()) <!-- 配信予定なしのカリキュラムを除外 -->
                 <div class="curriculum">
                     <img src="{{ $curriculum->thumbnail }}" alt="サムネイル" class="thumbnail">
-                    <p class="curriculum_title">{{ $curriculum->title }}</p>
+                    <a href="{{ route('user.show.delivery',  ['id' => 1]) }}" class="curriculum_title">{{ $curriculum->title }}</p>
                     <ul class="curriculum_times">
                         @if ($curriculum->always_delivery_flg == 1)
                             <li><a href="{{ route('user.show.delivery',  ['id' => 1]) }}">常時配信</a></li>
                         @else
-                            @foreach($curriculum->deliveryTimes as $time)
-                                <li><a href="{{ route('user.show.delivery', ['id' => 1]) }}">{{ $time->delivery_from }} ~ {{ $time->delivery_to }}</a></li>
+                            @foreach($curriculum->deliveryTimes as $deliveryTime)
+                                <li><a href="{{ route('user.show.delivery', ['id' => 1]) }}">{{ $deliveryTime->formatted_from }} ~ {{ $deliveryTime->formatted_to }}</a></li>
                             @endforeach
                         @endif
                     </ul>
