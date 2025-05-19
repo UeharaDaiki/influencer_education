@@ -1,6 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Users\ProgressController;
+use App\Http\Controllers\Users\ProfileController;
+use App\Http\Controllers\Users\TopController;
+use App\Http\Controllers\Users\ArticleController;
+use App\Http\Controllers\Users\CurriculumController;
+use App\Http\Controllers\Users\DeliveryController;
+use App\Http\Controllers\Users\Auth\LoginController;
+use App\Http\Controllers\Users\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +23,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::prefix('user')->namespace('User')->name('user')->group(function () {
+    Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [LoginController::class, 'login']);
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [RegisterController::class, 'register']);
+    Route::get('top', [TopController::class, 'top'])->name('top');
+    Route::get('article_top', [TopController::class, 'article_top'])->name('article_top');
+    Route::get('article/{id}', [ArticleController::class, 'show'])->name('article.show');
+
+    // 共通ヘッダーの画面遷移
+    Route::get('progress', [ProgressController::class, 'showProgress'])->name('showProgress');
+    Route::get('ProfileForm', [ProfileController::class, 'showProfileForm'])->name('showProfileForm');
+    Route::get('CurriculumList', [CurriculumController::class, 'showCurriculumList'])->name('showCurriculumList');
+
+    Route::get('delivery/{id}', [DeliveryController::class, 'showDelivery'])->name('show.delivery');
+    Route::post('/curriculum/{id}/complete', [CurriculumController::class, 'complete'])
+        ->name('curriculum.complete')
+        ->middleware('auth');
 });

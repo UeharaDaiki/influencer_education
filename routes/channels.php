@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers\Users\Auth;
+
 use Illuminate\Support\Facades\Broadcast;
 
 /*
