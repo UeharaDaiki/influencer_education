@@ -33,7 +33,7 @@ nav a.logout-link {
 
 .banner-area{
     margin-left: 470px;
-    margin-top: 20px;
+    margin-top: 35px;
 }
 
 .news-title{
@@ -112,4 +112,57 @@ nav a.logout-link {
 
 .carousel-indicator .dot.active {
     background-color: black;
+}
+
+.return-btn {
+    background: none;
+    border: none;
+    font-size: 25px;
+    margin-left: 50px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.video-container {
+    display: flex;
+    align-items: center; /* 縦位置中央に */
+    gap: 30px;            /* 動画とボタンの間隔 */
+    margin: 30px 80px;
+}
+
+#curriculum-btn {
+    background: #f26a44;
+    color: white;
+    font-size: 24px;
+    padding: 10px 60px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-left: 220px;
+}
+
+#curriculum-btn:disabled{
+    background: gray; 
+}
+
+.grade {
+    display: inline-block;
+    background-color: #87e0f4; /* 水色 */
+    color: white;
+    padding: 7px 15px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    width: 120px;
+}
+
+.curriculum-content {
+    width: 1000px;
+    justify-content: left;
+    margin-left: 150px;
+}
+
+.curriculum-title{
+    font-size: 30px;
 }

@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ArticleSeeder::class,
             BannerSeeder::class,
+            GradeSeeder::class,
+            CurriculumSeeder::class,
 
         ]);
     }

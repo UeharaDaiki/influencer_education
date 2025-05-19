@@ -11,7 +11,6 @@ class BannerSeeder extends Seeder
     {
         Banner::create([
             'image' => 'banner2.png',
-
         ]);
     }
 }
