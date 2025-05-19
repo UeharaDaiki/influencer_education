@@ -30,7 +30,7 @@ class CurriculumController extends Controller
         $start = Carbon::create($currentYear, $currentMonth, 1)->startOfMonth();
         $end = Carbon::create($currentYear, $currentMonth, 1)->endOfMonth();
 
-        $curriculums = Curriculum::getWithDeliveryTimesWithinPeriod($gradeId, $start, $end);
+        $curriculums = Curriculum::getWithDeliveryTimesWithGrade($gradeId, $start, $end);
 
         return view('user.curriculum_list', compact('grades', 'curriculums', 'gradeName', 'gradeId', 'currentYear', 'currentMonth'));
     }
@@ -43,7 +43,7 @@ class CurriculumController extends Controller
         $start = Carbon::create($currentYear, $currentMonth, 1)->startOfMonth();
         $end = Carbon::create($currentYear, $currentMonth, 1)->endOfMonth();
 
-        $curriculums = Curriculum::getWithDeliveryTimesWithinPeriod($gradeId, $start, $end);
+        $curriculums = Curriculum::getWithDeliveryTimesWithGrade($gradeId, $start, $end);
 
         return response()->json($curriculums);
     }
