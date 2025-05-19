@@ -30,22 +30,7 @@ class CurriculumController extends Controller
         $start = Carbon::create($currentYear, $currentMonth, 1)->startOfMonth();
         $end = Carbon::create($currentYear, $currentMonth, 1)->endOfMonth();
 
-        $curriculums = Curriculum::with(['deliveryTimes' => function ($query) use ($start, $end) {
-            $query->where('delivery_from', '<=', $end)
-                  ->where('delivery_to', '>=', $start);
-        }])
-        ->where('grade_id', $gradeId)
-        ->get();
-        
-        // foreach ($curriculums as $curriculum) {
-        //     if ($curriculum->deliveryTimes) {
-        //         foreach ($curriculum->deliveryTimes as $delivery_time) {
-        //             // 配信時間のフォーマットを整形
-        //             $delivery_time->formatted_from = Carbon::parse($delivery_time->delivery_from)->format('n月j日 H:i');
-        //             $delivery_time->formatted_to = Carbon::parse($delivery_time->delivery_to)->format('n月j日 H:i');
-        //         }
-        //     }
-        // }
+        $curriculums = Curriculum::getWithDeliveryTimesWithinPeriod($gradeId, $start, $end);
 
         return view('user.curriculum_list', compact('grades', 'curriculums', 'gradeName', 'gradeId', 'currentYear', 'currentMonth'));
     }
@@ -58,23 +43,7 @@ class CurriculumController extends Controller
         $start = Carbon::create($currentYear, $currentMonth, 1)->startOfMonth();
         $end = Carbon::create($currentYear, $currentMonth, 1)->endOfMonth();
 
-        // 該当のカリキュラムを取得
-        $curriculums = Curriculum::with(['deliveryTimes' => function ($query) use ($start, $end) {
-            $query->where('delivery_from', '<=', $end)
-                  ->where('delivery_to', '>=', $start);
-        }])
-        ->where('grade_id', $gradeId)
-        ->get();
-
-        // // 整形処理を追加
-        // foreach ($curriculums as $curriculum) {
-        //     if ($curriculum->deliveryTimes) {
-        //         foreach ($curriculum->deliveryTimes as $delivery_time) {
-        //             $delivery_time->formatted_from = Carbon::parse($delivery_time->delivery_from)->format('n月j日 H:i');
-        //             $delivery_time->formatted_to = Carbon::parse($delivery_time->delivery_to)->format('n月j日 H:i');
-        //         }
-        //     }
-        // }
+        $curriculums = Curriculum::getWithDeliveryTimesWithinPeriod($gradeId, $start, $end);
 
         return response()->json($curriculums);
     }

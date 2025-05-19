@@ -23,9 +23,19 @@ class Curriculum extends Model
         'updated_at',
     ];
 
-        public function deliveryTimes()
+    public function deliveryTimes()
     {
         return $this->hasMany(DeliveryTime::class, 'curriculums_id');
+    }
+
+    public static function getWithDeliveryTimesWithGrade($gradeId, $start, $end)
+    {
+        return self::with(['deliveryTimes' => function ($query) use ($start, $end) {
+            $query->where('delivery_from', '<=', $end)
+                  ->where('delivery_to', '>=', $start);
+        }])
+        ->where('grade_id', $gradeId)
+        ->get();
     }
 }
 

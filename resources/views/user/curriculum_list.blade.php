@@ -31,12 +31,12 @@
 
         <main id="curriculum_list">
             @forelse($curriculums as $curriculum)
-                @if($curriculum->always_delivery_flg == 1 || $curriculum->deliveryTimes->isNotEmpty()) <!-- 配信予定なしのカリキュラムを除外 -->
+                @if($curriculum->always_delivery_flg == true || $curriculum->deliveryTimes->isNotEmpty()) <!-- 配信予定なしのカリキュラムを除外 -->
                 <div class="curriculum">
                     <img src="{{ $curriculum->thumbnail }}" alt="サムネイル" class="thumbnail">
                     <a href="{{ route('user.show.delivery',  ['id' => 1]) }}" class="curriculum_title">{{ $curriculum->title }}</p>
                     <ul class="curriculum_times">
-                        @if ($curriculum->always_delivery_flg == 1)
+                        @if ($curriculum->always_delivery_flg == true)
                             <li><a href="{{ route('user.show.delivery',  ['id' => 1]) }}">常時配信</a></li>
                         @else
                             @foreach($curriculum->deliveryTimes as $deliveryTime)
