@@ -64,4 +64,9 @@ class Curriculums extends Model
         $curriculum -> fill($update_curriculum);
         return $curriculum->save();
     }
+
+    // 配信日時　初期表示　タイトル取得
+    public static function getCurriculumsTitle($id) {
+        return self::where('id', $id)->value('title');  
+    }
 }

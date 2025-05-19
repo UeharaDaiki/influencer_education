@@ -73,7 +73,7 @@
             常時公開
           </label>
         </div>
-        <div class="col-md-6 offset-md-3"><button type="submit" class="btn btn-success">登録</div>
+        <div class="col-md-6 offset-md-3"><button type="submit" class="btn btn-success">登録</button></div>
       </form>
     </div>
   </section>
