@@ -1,0 +1,64 @@
+.profile-text {
+    font-size: xx-large;
+    margin-left: 10px;
+}
+
+.image {
+    margin-left: 80px;
+    margin-bottom: 10px;
+}
+
+.name, .kana, .email, .password {
+    margin-bottom: 10px;
+    margin-left: 80px;
+}
+
+.name-input, .email-input {
+    margin-left: 70px;
+    width: 30%;
+}
+.kana-input{
+    margin-left: 150px;
+    width: 30%;
+}
+
+.password-input {
+    margin-left: 100px;
+}
+
+.regist-button {
+    margin-left: 400px;
+    width: 10%;
+    background-color: #FFA500;
+    color: white;
+    border: none;
+}
+
+.profile-image {
+    width: 180px;
+    height: 180px;
+}
+
+.image {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.image-text {
+    margin-left: 15px;
+}
+
+.image-text label {
+    font-size: x-large;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.image-text input[type="file"] {
+    margin-top: 20px;
+}
+
+.error {
+    color: red;
+}
