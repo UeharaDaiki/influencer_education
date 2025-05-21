@@ -1,0 +1,46 @@
+.article-detail{
+    font-size: x-large;
+    margin-left: 10px;
+}
+.posted-date{
+    margin-left: 30px;
+    margin-top: 30px;
+}
+.title{
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.contents{
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.input-date{
+    margin-left: 30px;
+    width: 30%;
+}
+.input-title{
+    margin-left: 30px;
+    width: 30%;
+}
+.input-contents{
+    margin-left: 60px;
+    width: 30%;
+    height: 100px;
+    text-align: justify;
+}
+.regist-btn{
+    margin-top:30px;
+    margin-left:25%;
+    background-color: #647274;
+    width: 180px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    text-decoration: none;
+}
+.contents-label{
+    vertical-align: top;
+}
+.error{
+    color: red;
+}
