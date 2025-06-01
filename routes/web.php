@@ -29,6 +29,5 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
     Route::post('/curriculum_update/{id}', [App\Http\Controllers\Admin\CurriculumController::class, 'updateCurriculum'])->name('curriculum.update');
     Route::get('/delivery_edit/{id}', [App\Http\Controllers\Admin\DeliveryController::class, 'showDeliveryEdit'])->name('show.delivery.edit');
     Route::post('/delivery_update/{id}', [App\Http\Controllers\Admin\DeliveryController::class, 'updateDelivery'])->name('update.delivery');
-    Route::post('/delivery_delete/{id}', [App\Http\Controllers\Admin\DeliveryController::class, 'deleteDelivery'])->name('delete.delivery');
 });
 

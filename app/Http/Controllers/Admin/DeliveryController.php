@@ -10,12 +10,9 @@ use App\Http\Requests\DeliveryTimesRequest;
 
 class DeliveryController extends Controller
 {
-    //
     public function showDeliveryEdit($id) {
         $title = Curriculums::getCurriculumsTitle($id);
         $deliveryTime = DeliveryTime::getDelivery_time($id);
-        // dd($title);
-        // dd($deliveryTime);
         $id = $id;
         return view('user.delivery', compact('title','id','deliveryTime'));
     }
@@ -33,21 +30,13 @@ class DeliveryController extends Controller
                 'delivery_to' => $to[$index],
             ];
         }
-        // dd($times);
         try{
-            DeliveryTime::updateTimes($id,$times);
+            DeliveryTime::updateTimes($id , $times);
             return redirect() -> route('admin.show.curriculum.list');
         }catch (QueryException $e) {
-            // dd($e);
             return redirect() -> route('admin.show.delivery.edit', [$id]) -> with(['error' => 'データベースエラー'], 500);
         } catch (\Exception $e) {
-            // dd($e);
             return redirect() -> route('admin.show.delivery.edit', [$id]) -> with(['error' => '処理に失敗しました'], 500);
         }
-        
-    }
-
-    public function deleteDelivery($id) {
-        dd($id);
     }
 }
