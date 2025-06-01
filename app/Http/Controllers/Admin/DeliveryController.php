@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Curriculums;
 use App\Models\DeliveryTime;
 use Illuminate\Http\Request;
+use App\Http\Requests\DeliveryTimesRequest;
 
 class DeliveryController extends Controller
 {
@@ -20,7 +21,7 @@ class DeliveryController extends Controller
     }
 
     // 配信日時更新処理
-    public function updateDelivery(Request $request , $id) {
+    public function updateDelivery(DeliveryTimesRequest $request , $id) {
         // viewから配列で渡るため配列で扱う
         $from = (array)$request->input('delivery_from');
         $to = (array)$request->input('delivery_to');
@@ -37,12 +38,16 @@ class DeliveryController extends Controller
             DeliveryTime::updateTimes($id,$times);
             return redirect() -> route('admin.show.curriculum.list');
         }catch (QueryException $e) {
-            dd($e);
+            // dd($e);
             return redirect() -> route('admin.show.delivery.edit', [$id]) -> with(['error' => 'データベースエラー'], 500);
         } catch (\Exception $e) {
-            dd($e);
+            // dd($e);
             return redirect() -> route('admin.show.delivery.edit', [$id]) -> with(['error' => '処理に失敗しました'], 500);
         }
         
+    }
+
+    public function deleteDelivery($id) {
+        dd($id);
     }
 }
