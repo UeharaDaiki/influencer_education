@@ -15,7 +15,7 @@ class DeliveryController extends Controller
         $title = Curriculums::getCurriculumsTitle($id);
         $deliveryTime = DeliveryTime::getDeliveryTime($id);
         $id;
-        return view('user.delivery', compact('title','id','deliveryTime'));
+        return view('admin.layouts.delivery', compact('title','id','deliveryTime'));
     }
 
     // 配信日時更新処理

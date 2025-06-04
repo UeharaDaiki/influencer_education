@@ -16,7 +16,6 @@ use Carbon\Carbon;
 class CurriculumController extends Controller
 {
     //授業一覧・設定用
-
     /**
      * 授業一覧
      * 表示
@@ -36,7 +35,7 @@ class CurriculumController extends Controller
         $curriculums_id = $curriculums -> pluck('id');
         // 公開期間
         $delivery_times = DeliveryTime::getDeliveryTimes($curriculums_id);
-        return view('user.curriculum_list',compact('grades' , 'curriculums' , 'delivery_times' , 'grade_name'));
+        return view('admin.layouts.curriculum_list',compact('grades' , 'curriculums' , 'delivery_times' , 'grade_name'));
     }
 
     /**
@@ -46,7 +45,7 @@ class CurriculumController extends Controller
     public function showCurriculumRegistration() {
         //学年プルダウン用
         $grades = Grade::getGrade();
-        return view('user.curriculum_registration',compact('grades'));
+        return view('admin.layouts.curriculum_registration',compact('grades'));
     }
 
     /**
@@ -79,7 +78,6 @@ class CurriculumController extends Controller
         } catch (\Exception $e) {
             return redirect() -> route('admin.show.curriculum.registration') -> with(['error' => '処理に失敗しました'], 500);
         }
-        
     }
 
     /**
@@ -93,8 +91,9 @@ class CurriculumController extends Controller
         $edit_curriculum = Curriculums::getEditCurriculum($id);
         $id = $id;
         // 公開期間
-        return view('user.curriculum_edit',compact('grades','edit_curriculum','id'));
+        return view('admin.layouts.curriculum_edit',compact('grades','edit_curriculum','id'));
     }
+    
     /**
      * 授業編集
      * 更新処理
