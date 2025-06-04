@@ -12,7 +12,7 @@
           {{ session('error') }}
         </div>
       @endif
-      <form method="POST" action={{ route('admin.curriculum.registration') }} enctype="multipart/form-data">
+      <form method="POST" action="{{ route('admin.curriculum.registration') }}" enctype="multipart/form-data">
         @csrf
         <div>
           <img src="{{ asset('storage/images/default_img.png') }}" class="card-img-top w-25" alt="サムネイル">

@@ -35,7 +35,7 @@ class CurriculumController extends Controller
         // 学年のidのみ取得
         $curriculums_id = $curriculums -> pluck('id');
         // 公開期間
-        $delivery_times = DeliveryTime::getDelivery_times($curriculums_id);
+        $delivery_times = DeliveryTime::getDeliveryTimes($curriculums_id);
         return view('user.curriculum_list',compact('grades' , 'curriculums' , 'delivery_times' , 'grade_name'));
     }
 

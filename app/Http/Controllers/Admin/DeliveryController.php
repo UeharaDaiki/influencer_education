@@ -7,13 +7,14 @@ use App\Models\Curriculums;
 use App\Models\DeliveryTime;
 use Illuminate\Http\Request;
 use App\Http\Requests\DeliveryTimesRequest;
+use Illuminate\Database\QueryException;
 
 class DeliveryController extends Controller
 {
     public function showDeliveryEdit($id) {
         $title = Curriculums::getCurriculumsTitle($id);
-        $deliveryTime = DeliveryTime::getDelivery_time($id);
-        $id = $id;
+        $deliveryTime = DeliveryTime::getDeliveryTime($id);
+        $id;
         return view('user.delivery', compact('title','id','deliveryTime'));
     }
 

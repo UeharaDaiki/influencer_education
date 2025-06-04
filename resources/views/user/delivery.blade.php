@@ -12,7 +12,7 @@
           {{ session('error') }}
         </div>
       @endif
-      <form method="POST" action={{ route('admin.update.delivery',['id'=>$id]) }}>
+      <form method="POST" action="{{ route('admin.update.delivery',['id'=>$id]) }}">
         @csrf
         <div>
           <h2>{{ $title }}</h2>
@@ -55,9 +55,6 @@
           <div class="row">
             <div class="col-3 mb-3">
               <input type="datetime-local" class="form-control" name="delivery_from[]">
-              {{-- @error('delivery_from')
-                <div class="text-danger">{{ $message }}</div>
-              @enderror --}}
               @error("delivery_from.*")
                 <div class="text-danger">{{ $message }}</div>
               @enderror
@@ -67,9 +64,6 @@
             </div>
             <div class="col-3 mb-3">
               <input type="datetime-local" class="form-control" name="delivery_to[]">
-              {{-- @error('delivery_to')
-                <div class="text-danger">{{ $message }}</div>
-              @enderror --}}
               {{-- emptyは1行しか表示しないから$indexはいらない --}}
               @error("delivery_to.*")
                 <div class="text-danger">{{ $message }}</div>

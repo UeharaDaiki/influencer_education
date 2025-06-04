@@ -10,7 +10,6 @@ class DeliveryTime extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id',
         'curriculums_id',
         'delivery_from',
         'delivery_to'
@@ -24,12 +23,12 @@ class DeliveryTime extends Model
  */
 
     // 取得
-    public static function getDelivery_times($id) {
+    public static function getDeliveryTimes($id) {
         return self::whereIn('curriculums_id', $id)->get();
     }
 
     // 取得
-    public static function getDelivery_time($id) {
+    public static function getDeliveryTime($id) {
         return self::where('curriculums_id', $id)->get();
     }
 
