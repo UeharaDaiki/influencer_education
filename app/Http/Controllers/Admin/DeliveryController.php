@@ -14,7 +14,6 @@ class DeliveryController extends Controller
     public function showDeliveryEdit($id) {
         $title = Curriculums::getCurriculumsTitle($id);
         $deliveryTime = DeliveryTime::getDeliveryTime($id);
-        $id;
         return view('admin.layouts.delivery', compact('title','id','deliveryTime'));
     }
 
