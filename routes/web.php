@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\CurriculumController;
+use App\Http\Controllers\Admin\Auth\RegisterController;
 
 
 /*
@@ -51,3 +52,7 @@ Route::prefix('user')->name('user.')->group(function () {
     
 });
 
+Route::prefix('admin')->name('admin.')->group(function () {
+    /* ユーザー新規登録画面 */
+    Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('show.register');
+});
