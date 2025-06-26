@@ -55,4 +55,10 @@ Route::prefix('user')->name('user.')->group(function () {
 Route::prefix('admin')->name('admin.')->group(function () {
     /* ユーザー新規登録画面 */
     Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('show.register');
+
+    Route::post('/register', [RegisterController::class, 'store'])->name('register');
+
+    Route::get('/login', function () {
+        return '管理者ログイン画面（仮）';
+    })->name('show.login');
 });
