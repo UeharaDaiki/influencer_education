@@ -47,7 +47,9 @@
                 <div class="form-group__input-wrapper">
                     <input class="form-group__input" type="text" name="password">
                     @error('password')
-                        <div class="form-group__error">{{ $message }}</div>
+                        @if ($message !== '上記パスワードと一致しません')
+                            <div class="form-group__error">{{ $message }}</div>
+                        @endif
                     @enderror
                 </div>
             </div>
@@ -58,6 +60,12 @@
                     <input class="form-group__input" type="text" name="password_confirmation">
                         @error('password_confirmation')
                             <div class="form-group__error">{{ $message }}</div>
+                        @enderror
+
+                        @error('password')
+                            @if ($message === '上記パスワードと一致しません')
+                                <div class="form-group__error">{{ $message }}</div>
+                            @endif
                         @enderror
                 </div>
             </div>

@@ -28,8 +28,8 @@ class AdminRequest extends FormRequest
             'name' => 'required|max:30',
             'name_kana' => 'required|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
             'email' => 'required|email|max:255|unique:admins',
-            'password' => 'required|min:8',
-            'password_confirmation' => 'required|confirmed',
+            'password' => 'required|min:8|confirmed',
+            'password_confirmation' => 'required',
         ];
     }
 
