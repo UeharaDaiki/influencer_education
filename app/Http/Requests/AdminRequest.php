@@ -25,8 +25,8 @@ class AdminRequest extends FormRequest
     {
         // 管理者の新規登録に必要なバリデーションルール
         return [
-            'name' => 'required|max:30',
-            'name_kana' => 'required|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
+            'name' => 'required|max:255',
+            'name_kana' => 'required|max:255|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
             'email' => 'required|email|max:255|unique:admins',
             'password' => 'required|min:8|confirmed',
             'password_confirmation' => 'required',
@@ -38,8 +38,9 @@ class AdminRequest extends FormRequest
         //　各バリデーションルールに対するエラーメッセージ
         return [
             'name.required' => 'ユーザーネームを入力してください',
-            'name.max' => '30文字以内で入力してください',
+            'name.max' => '255文字以内で入力してください',
             'name_kana.required' => 'ユーザーネームの読み仮名を入力してください',
+            'name_kana.max' => '255文字以内で入力してください',
             'name_kana.regex' => 'カタカナで入力してください',
             'email.required' => 'メールアドレスを入力してください',
             'email.email' => 'メールアドレス形式で入力してください',
