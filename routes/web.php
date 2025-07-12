@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\CurriculumController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
-
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,7 +58,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::post('/register', [RegisterController::class, 'store'])->name('register');
 
-    Route::get('/login', function () {
-        return '管理者ログイン画面（仮）';
-    })->name('show.login');
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('show.login');
+
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
+
+    /* 管理者トップ画面 */
+    Route::get('/top', function () {
+        return '管理者トップ画面（仮）';
+    })->name('show.top');
 });

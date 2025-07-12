@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\AdminRequest;
 use App\Models\Admin;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -24,7 +25,7 @@ class RegisterController extends Controller
             'name' => $validatedData['name'],
             'name_kana' => $validatedData['name_kana'],
             'email' => $validatedData['email'],
-            'password' => bcrypt($validatedData['password']), // パスワードをハッシュ化
+            'password' => Hash::make($validatedData['password']), // パスワードをハッシュ化
         ]);
 
         // 登録完了後のリダイレクト
