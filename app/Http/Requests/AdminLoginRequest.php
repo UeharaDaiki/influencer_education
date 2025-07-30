@@ -35,7 +35,7 @@ class AdminLoginRequest extends FormRequest
             'email.required' => 'メールアドレスを入力してください',
             'email.email' => 'メールアドレス形式で入力してください',
             'password.required' => 'パスワードを入力してください',
-            'password.regex:/^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}$/' => '半角英数8文字以上で入力してください',
+            'password.regex' => '半角英数8文字以上で入力してください',
         ];
     }
 }

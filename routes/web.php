@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\CurriculumController;
-use App\Http\Controllers\Admin\Auth\RegisterController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Admin\RegisterController;
+use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\TopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,7 +64,21 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/login', [LoginController::class, 'login'])->name('login');
 
     /* 管理者トップ画面 */
-    Route::get('/top', function () {
-        return '管理者トップ画面（仮）';
-    })->name('show.top');
+    Route::get('/top', [TopController::class, 'showTop'])->name('show.top');
+
+    /* 授業一覧画面 */
+    Route::get('/curriculum_list', function () {
+        return '授業一覧画面（仮）';
+    })->name('show.curriculum.list');
+    
+
+    /* お知らせ一覧画面 */
+    Route::get('/article_list', function () {
+        return 'お知らせ一覧画面（仮）';
+    })->name('show.article.list');
+
+    /* バナー管理画面 */
+    Route::get('/banner_list', function () {
+        return 'バナー管理画面（仮）';
+    })->name('show.banner.list');
 });

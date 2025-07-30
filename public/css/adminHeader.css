@@ -1,5 +1,5 @@
 #header {
-    background-color:rgb(227, 119, 51);
+    background-color:rgb(77, 218, 237);
     width: 100%;
     padding: 30px 0;
     position: fixed;
@@ -9,13 +9,11 @@
 }
 
 .btn {
-    width: 200px;
-    height: 50px;
-    background-color: rgb(42, 111, 141);
+    background-color: rgb(67, 93, 104);
     color: white;
     padding: 10px 20px;
-    border-radius: 5px;
     margin: 25px;
+    border-radius: 5px;
     font-size: 20px;
     border: none;
     text-align: center;
@@ -23,14 +21,13 @@
 }
 
 .btn:hover {
-    background-color: rgb(34, 90, 115);
+    background-color: rgb(34, 69, 86);
 }
 
 .logout {
     float: right;
     margin-right: 50px;
-    margin-top: 30px;
-    font-size: 20px;
+    font-size: 25px;
     text-decoration: none;
-    color: black;
+    color: white;
 }
