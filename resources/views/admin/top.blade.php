@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="{{ asset('css/adminTop.css') }}">
 </head>
 <body>
-    @include('admin.auth.layouts.app')
+    @include('admin.layouts.app')
 
     <div class="main_content">
         <p>ユーザーネーム：<span>{{ $name }}</span></p>

@@ -5,6 +5,7 @@ use App\Http\Controllers\User\CurriculumController;
 use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\TopController;
+use App\Http\Controllers\Admin\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,7 +79,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     })->name('show.article.list');
 
     /* バナー管理画面 */
-    Route::get('/banner_list', function () {
-        return 'バナー管理画面（仮）';
-    })->name('show.banner.list');
+    Route::get('/banner_edit', [BannerController::class, 'showBannerEdit'])->name('show.banner.edit');
+
+    /*バナー登録処理 */
+    Route::post('/banner_store', [BannerController::class, 'store'])->name('store.banner');
+
+    /* バナー削除処理 */
+    Route::post('/banner/delete', [BannerController::class, 'delete'])->name('admin.banner.delete');
+
 });
