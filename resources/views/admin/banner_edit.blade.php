@@ -8,6 +8,7 @@
     <title>バナー管理</title>
     <link rel="stylesheet" href="{{ asset('css/adminHeader.css') }}">
     <link rel="stylesheet" href="{{ asset('css/banner.css') }}">
+
 </head>
 <body>
     @include('admin.layouts.app')
@@ -19,11 +20,6 @@
 
         <form action="{{ route('admin.store.banner') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            @if(session('success'))
-                <div class="alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
             <div class="image-fields">
                 @foreach ($banners as $banner)
                     <div class="image-fields__form">
@@ -48,5 +44,18 @@
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="{{ asset('js/admin/banner.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            
+         @if(session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                Swal.fire({
+                    icon: 'success',
+                    title: '成功',
+                    text: "{{ session('success') }}",
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+        @endif
 </body>
 </html>

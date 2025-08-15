@@ -83,8 +83,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     /*バナー登録処理 */
     Route::post('/banner_store', [BannerController::class, 'store'])->name('store.banner');
-
-    /* バナー削除処理 */
-    Route::post('/banner/delete', [BannerController::class, 'delete'])->name('admin.banner.delete');
-
 });

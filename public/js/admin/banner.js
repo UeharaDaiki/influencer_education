@@ -21,29 +21,15 @@ document.addEventListener('click', function (e) {
             return;
         }
 
-        // 確認なしで即削除APIへPOST
-        fetch('/admin/banner/delete', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            },
-            body: JSON.stringify({ id: bannerId })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                e.target.parentElement.remove();
-                // ここで画面をリロードする
-                location.reload();
-            } else {
-                alert('削除に失敗しました');
-            }
-        })
-        .catch(() => {
-            alert('エラーが発生しました');
-        });
+                // 既存バナーの場合は hidden input を作る
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'deleted_banners[]';
+        input.value = bannerId;
+        document.querySelector('form').appendChild(input);
 
+        // 画面からも削除
+        e.target.parentElement.remove();
     }
 });
 
@@ -58,5 +44,15 @@ document.addEventListener('change', function (e) {
             }
             reader.readAsDataURL(file);
         }
+    }
+});
+
+document.querySelector('form').addEventListener('submit', function(e) {
+    const files = document.querySelectorAll('.image-fields__input');
+    const anyFileSelected = Array.from(files).some(input => input.files.length > 0);
+
+    if (!anyFileSelected) {
+        e.preventDefault();
+        alert('バナー画像をアップロードしてください。');
     }
 });
