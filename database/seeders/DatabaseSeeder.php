@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\App;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,6 +15,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        if(App::environment('local')) {
+            //ローカルだけで使いたいSeeder
+            $this->call([
+                CurriculumsSeeder::class,
+                DeliveryTimesSeeder::class,
+                UsersSeeder::class,
+            ]);
+        }
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

@@ -1,0 +1,137 @@
+.sidebar {
+    position: fixed;
+    top: 200px;
+    left: 50px;
+    width: 200px;
+    height: 100%;
+    z_index: 1000;
+}
+
+.grade_btn {
+    width: 100px;
+    padding: 5px ;
+    border-radius: 4px;
+    margin-block: 5px;
+    font-weight: bold;
+    text-align: center;
+    color: white;   
+}
+
+.elementary {
+    background-color: rgb(134, 213, 225);
+}
+
+.grade_btn.elementary:hover {
+    background-color: rgb(43, 189, 214);
+}
+
+.junior {
+    background-color: rgb(46, 170, 162);
+}
+
+.grade_btn.junior:hover {
+    background-color: rgb(46, 130, 124);
+}
+
+.high {
+    background-color: rgb(50, 199, 129);
+}
+
+.grade_btn.high:hover {
+    background-color: rgb(42, 156, 103);
+}
+
+.back {
+    position: fixed;
+    top: 110px;
+    left: 30px;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    padding: 10px 20px;
+}
+
+#calendar {
+    position: fixed;
+    top: 120px;
+    left: 200px;
+    z-index: 1000;
+}
+
+.active_month {
+    font-weight: bold;
+    font-size: 25px;
+    z-index: 1000;
+}
+
+.grade_name {
+    position: fixed;
+    top: 130px;
+    left: 650px;
+    width: 100px;
+    padding: 5px ;
+    border-radius: 4px;
+    margin-block: 5px;
+    font-weight: bold;
+    text-align: center;
+    color: white; 
+    z-index: 1000;
+}
+
+.grade_name:disabled {
+    opacity: 1; /* 見た目そのまま */
+    pointer-events: none; /* クリック無効 */
+  }
+
+#curriculum_list {
+    position: absolute;
+    top: 200px;
+    left: 250px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+
+}
+
+.curriculum {
+    width: 250px;
+    height: 350px;
+    border: 1px solid #ccc;
+}
+
+.curriculum_title {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.curriculum ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.curriculum img {
+    width: 220px;
+    height: 150px;
+    object-fit: cover;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 4px;
+}
+
+.curriculum_times {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+.curriculum_times a {
+    float: left;
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+    margin-left: 10px;
+
+}
