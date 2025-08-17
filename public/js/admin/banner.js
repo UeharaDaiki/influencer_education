@@ -26,7 +26,7 @@ document.addEventListener('click', function (e) {
         input.type = 'hidden';
         input.name = 'deleted_banners[]';
         input.value = bannerId;
-        document.querySelector('form').appendChild(input);
+        e.target.closest('form').appendChild(input);
 
         // 画面からも削除
         e.target.parentElement.remove();
@@ -44,15 +44,5 @@ document.addEventListener('change', function (e) {
             }
             reader.readAsDataURL(file);
         }
-    }
-});
-
-document.querySelector('form').addEventListener('submit', function(e) {
-    const files = document.querySelectorAll('.image-fields__input');
-    const anyFileSelected = Array.from(files).some(input => input.files.length > 0);
-
-    if (!anyFileSelected) {
-        e.preventDefault();
-        alert('バナー画像をアップロードしてください。');
     }
 });

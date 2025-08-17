@@ -21,9 +21,24 @@ class BannerController extends Controller
     public function store(BannerStoreRequest $request)
     {
 
+        $newBanners = $request->file('banners', []);
+        $existingBannersCount = \App\Models\Banner::count();
+
+        // 新規追加も削除もない場合のみリダイレクト
+        if (count($newBanners) === 0 && !$request->filled('deleted_banners')) {
+            return redirect()->back();
+        }
+
         DB::beginTransaction();
 
         try {
+            $deletedCount = count($request->input('deleted_banners', []));
+            $remainingBanners = Banner::count() - $deletedCount;
+
+            if ($remainingBanners <= 0 && empty($newBanners)) {
+                // 削除して0枚になる場合は処理中断
+                return redirect()->back()->withErrors(['banners' => 'バナーは最低1枚以上残す必要があります。']);
+            }
             // 1. 削除対象の既存バナーがあれば削除
             if ($request->filled('deleted_banners')) {
                 foreach ($request->input('deleted_banners') as $bannerId) {

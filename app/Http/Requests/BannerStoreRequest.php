@@ -24,16 +24,28 @@ class BannerStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'banners.*' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
+            'banners.*' => 'mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 
     public function messages()
     {
         return [
-            'banners.*.required' => 'バナー画像を選択してください。',
             'banners.*.mimes' => 'jpeg, png, jpg, gif のいずれかの形式でアップロードしてください。',
             'banners.*.max' => '画像は2MB以下でアップロードしてください。',
         ];
     }
+
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            $newBanners = $this->file('banners', []);
+            $existingBannersCount = \App\Models\Banner::count();
+
+            if (count($newBanners) === 0 && $existingBannersCount === 0) {
+                $validator->errors()->add('banners', 'バナー画像を1つ以上選択してください。');
+            }
+        });
+    }
+
 }

@@ -57,5 +57,18 @@
             });
         </script>
         @endif
+
+        @if ($errors->any())
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'エラー',
+                        text: "{{ $errors->first() }}", // 最初のエラーメッセージ
+                        confirmButtonText: 'OK'
+                    });
+                });
+            </script>
+        @endif
 </body>
 </html>
